@@ -38,6 +38,7 @@ LINKS = (
 SOCIAL = (
           ('github', 'https://github.com/dev1ant'),
           ('twitter', 'https://twitter.com/man_brain'),
+          ('rss', 'http://blog.simply.name/feeds/postgresql.xml'),
          )
 
 DEFAULT_PAGINATION = 5
