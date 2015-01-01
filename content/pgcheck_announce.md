@@ -2,7 +2,9 @@ Title: Pgcheck
 Date: 2014-10-21 15:20
 Category: PostgreSQL
 Tags: PostgreSQL, plproxy, pgcheck
+Lang: ru
+Slug: pgcheck
 
-A month ago I [spoke]({filename}/yameetup_video.html) about first steps in Yandex.Mail with PostgreSQL and particularly about our tools to provide fault tolerance. One of them is pgcheck - tool for monitoring backend databases from [PL/Proxy](http://plproxy.projects.pgfoundry.org/doc/tutorial.html) hosts and changing plproxy.get_cluster_partitions function output to for controlling load on databases.
+Месяц назад я [рассказывал]({filename}/yameetup_video.html) о первых шагах Яндекс.Почты с PostgreSQL и, в частности, о наших инструментах обеспечения отказоустойчивости. Один из них pgcheck - средство мониторинга конечных баз с [PL/Proxy](http://plproxy.projects.pgfoundry.org/doc/tutorial.html)-машин и изменения выдачи функции `plproxy.get_cluster_partitions` для распределения нагрузки на базы.
 
-More info could be found on [github](https://github.com/yandex/pgcheck) as pgcheck is open source now. Enjoy.
+Больше информации можно найти на [github](https://github.com/yandex/pgcheck). Ура!

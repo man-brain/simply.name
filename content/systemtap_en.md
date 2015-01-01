@@ -1,23 +1,23 @@
-Title: PostgreSQL и SystemTap
+Title: PostgreSQL and SystemTap
 Date: 2014-12-08 21:00
 Category: PostgreSQL
 Tags: PostgreSQL, SystemTap, debugging, sources
-Lang: ru
+Lang: en
 Slug: postgresql-and-systemtap
 
-####Пролог
+####Preface
 
-Однажды мы стали наблюдать странные проблемы с производительностью
-PostgreSQL 9.4 на пишущей нагрузке с большим shared_buffers. Сама проблема
-хорошо описана [тут](http://www.postgresql.org/message-id/0DDFB621-7282-4A2B-8879-A47F7CECBCE4@simply.name),
-но она не относится к теме поста. Поскольку PostgreSQL не имеет аналога
-интерфейса ожиданий Oracle, мы написали пару простых SystemTap скриптов для
-локализации проблемы. Ниже немного деталей.
+Once upon a time we started having strange performance issues with writing-only
+load on PostgreSQL 9.4 with huge shared_buffers. The problem itself is well
+described [here](http://www.postgresql.org/message-id/0DDFB621-7282-4A2B-8879-A47F7CECBCE4@simply.name)
+but it is not the topic of the post. And since PostgreSQL does not have
+something like Oracle wait events interface yet, we have written a couple of
+simple SystemTap scripts to determine the problem. Below are some details.
 
-####Подготовка
+####Preparing
 
-Для начала нужно поставить необходимые пакеты. Строго говоря, далеко не все
-из нижеперечисленных пакетов нужны, но совершенно точно, что их достаточно:
+First of all you need to install needed packages. Actually, not everything from
+below listed is needed but it is just enough:
 
     :::BashSessionLexer
     root@xdb01d ~ # rpm -qa | grep systemtap
@@ -34,9 +34,8 @@ PostgreSQL 9.4 на пишущей нагрузке с большим shared_buf
     kernel-devel-2.6.32-504.el6.x86_64
     root@xdb01d ~ #
 
-Следующее, что необходимо сделать, - это пересобрать PostgreSQL с опцией
-`--enable-dtrace`, переданной `configure`-скрипту. Поскольку мы используем
-RHEL, я поправил spec-файл следующим образом:
+The next thing to do is to compile PostgreSQL with `--enable-dtrace` option
+passed to `configure`-script. Since I am using RHEL I have fixed spec-file for that:
 
     :::DiffLexer
     $ diff postgresql-9.4.spec.orig postgresql-9.4.spec
@@ -44,31 +43,28 @@ RHEL, я поправил spec-файл следующим образом:
     >   --enable-dtrace \
     >   --enable-debug \
 
-Вообще-то компиляция с этими символами необходима только для использования
-предопределённых в коде PostgreSQL маркеров. Все они описаны в
-[документации](http://www.postgresql.org/docs/current/static/dynamic-trace.html#DTRACE-PROBE-POINT-TABLE).
-Опция `--enable-debug` вообще не нужна для использования SystemTap - я добавил
-её для снятия информативных трейсов с процессов PostgreSQL с помощью gdb.
-Ещё одна вещь, о которой стоит сказать, - это то, что пересборка PostgreSQL
-для глубокой отладки, явно не является решением для использования в бою :(
-Именно поэтому аналог интерфейа ожиданий oracle в PostgreSQL когда-нибудь
-должен быть сделан.
+Actually, compiling with such symbols is neccessary for using predefined in
+PostgreSQL source code markers. All of them are defined in the
+[documentation](http://www.postgresql.org/docs/current/static/dynamic-trace.html#DTRACE-PROBE-POINT-TABLE).
+Option `--enable-debug` is not needed for using systemtap at all - I have added
+it for taking PostgreSQL backend stack traces with gdb. One more thing to say
+is that recompiling PostgreSQL for deeper debugging is not really the thing to
+be used in production-environment :( That's why IMHO analogue of oracle wait
+interface in PostgreSQL should be done ever.
 
-####Первый stap
-Допустим, у нас есть всё, чтобы начать, что дальше? Первый шаг на самом деле
-очень непростой. Я бы порекомендовал начать со следующего:
+####First stap
+Right, let's assume that we have everything needed to start, what next? The
+first step is really very difficult. I could recommend a few things to look at:
 
-  * [SystemTap Beginners Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/SystemTap_Beginners_Guide/)
-  от Red Hat. И в первую очередь с
-  [параграфа про проверку работы SystemTap](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/SystemTap_Beginners_Guide/using-systemtap.html#testing).
-  * [PostgreSQL with SystemTap](http://blog.endpoint.com/2009/05/postgresql-with-systemtap.html) от Joshua Tolley.
-  * [Немного примеров и даже видео](https://sourceware.org/systemtap/wiki/PostgresqlMarkers) на SystemTap wiki.
+  * [SystemTap Beginners Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/SystemTap_Beginners_Guide/) from Red Hat.
+  And first of all [paragraph about testing SystemTap](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/SystemTap_Beginners_Guide/using-systemtap.html#testing).
+  * [PostgreSQL with SystemTap](http://blog.endpoint.com/2009/05/postgresql-with-systemtap.html) by Joshua Tolley.
+  * [Some examples and even video](https://sourceware.org/systemtap/wiki/PostgresqlMarkers) on SystemTap wiki.
 
-Для начала можно просто скопировать и запустить примеры выше, а затем вносить
-в них небольшие изменения, которые вам необходимы. Мой первый stap ниже, он
-просто выводит начало и конец всех этапов checkpoint'а (время и pid). Он был
-мне необходим для сопоставления всплесков потребления CPU во время
-checkpoint'ов с происходящими событиями.
+At first you could simply do copy-paste the examples above. And than do small
+changes in them to get what you need. My first stap is below, it simply prints
+all checkpoint events (time and pid). I needed it to map CPU spikes during
+checkpointing with events happening at this time.
 
     :::CLexer
     probe process("/usr/pgsql-9.4/bin/postgres").mark("checkpoint__start")
@@ -122,8 +118,8 @@ checkpoint'ов с происходящими событиями.
     probe process("/usr/pgsql-9.4/bin/postgres").mark("twophase__checkpoint__done")
     { printf ("[%s] Twophase checkpoint done by pid %d\n", ctime(gettimeofday_s()), pid()) }
 
-Дальше возникла необходимость отследить время, в течение которого держалась
-блокировка на расширение отношения. Я это сделал так:
+The next thing was to track spent time under locking the relation for extension.
+I've done it in this way:
 
     :::CLexer
     global count, abyrvalg, timings, sec_timings
@@ -163,8 +159,8 @@ checkpoint'ов с происходящими событиями.
         printf("Min: %d ms\nMax: %d ms\nAvg: %d ms\n", @min(timings), @max(timings), @avg(timings))
     }
 
-Строго говоря, я добавил эту часть в первый stap и запустил всё вместе. Вывод
-команды `stap -v` был следующий (много строчек пропущено с `<...>`):
+Actually I have added this part to the first stap and the output of running it
+with `stap -v ` command was (lost of lines are skipped with `<...>`):
 
     :::TextLexer
     Pass 1: parsed user script and 96 library script(s) using 198148virt/26440res/3120shr/23744data kb, in 160usr/10sys/165real ms.
@@ -234,14 +230,16 @@ checkpoint'ов с происходящими событиями.
     WARNING: Number of errors: 0, skipped probes: 13046
     Pass 5: run completed in 20usr/100sys/527749real ms.
 
-Из вывода этого скрипты видно, что проблемы случаются во время сбрасывания
-буфферов из shared_buffers на диск. И есть моменты, когда много времени
-проводится под ExclusiveLock на расширение отношения между [этой](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/access/heap/hio.c;h=631af759d78fef6c9e909b50fc48ef37b32cbae9;hb=refs/heads/REL9_4_STABLE#l431)
-и [этой](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/access/heap/hio.c;h=631af759d78fef6c9e909b50fc48ef37b32cbae9;hb=refs/heads/REL9_4_STABLE#l460)
-строчками кода в [функции RelationGetBufferForTuple](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/access/heap/hio.c;h=631af759d78fef6c9e909b50fc48ef37b32cbae9;hb=refs/heads/REL9_4_STABLE#l158).
+From the output of this stap you can see that problems occur while doing buffer
+sync and there are situations when a lot of time is spent under holding
+ExclusiveLock on extension of relation between
+[this](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/access/heap/hio.c;h=631af759d78fef6c9e909b50fc48ef37b32cbae9;hb=refs/heads/REL9_4_STABLE#l431)
+and [this](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/access/heap/hio.c;h=631af759d78fef6c9e909b50fc48ef37b32cbae9;hb=refs/heads/REL9_4_STABLE#l460)
+lines of code in
+[RelationGetBufferForTuple function](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/access/heap/hio.c;h=631af759d78fef6c9e909b50fc48ef37b32cbae9;hb=refs/heads/REL9_4_STABLE#l158).
 
-####Второй stap
-Вторым я написал следующий stap:
+####Second stap
+The next stap I had written was the following:
 
     :::CLexer
     global count, count_with_clock, passes, sec_passes
@@ -273,23 +271,24 @@ checkpoint'ов с происходящими событиями.
         printf("Min: %d ms\nMax: %d ms\nAvg: %d ms\n", @min(passes), @max(passes), @avg(passes))
     }
 
-Обратите внимание, что PostgreSQL не должен быть собран с опцией `--enable-dtrace`
-для работы этого скрипта. И этот stap получает данные из
-[структуры StrategyControl](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/storage/buffer/freelist.c;h=4befab0e1ad05f05e950d3dea6f0951d94b4ef4d;hb=refs/heads/REL9_4_STABLE#l22)
-на выходе из [функции StrategyGetBuffer](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/storage/buffer/freelist.c;h=4befab0e1ad05f05e950d3dea6f0951d94b4ef4d;hb=refs/heads/REL9_4_STABLE#l94),
-чтобы увидеть, сколько страничек в shared_buffers было пройдено до того, как
-был найден буффер для вытеснения.
+Note that PostgreSQL should not be built with `--enable-dtrace` option for this
+stap to work. And this stap gets data from
+[StrategyControl structure](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/storage/buffer/freelist.c;h=4befab0e1ad05f05e950d3dea6f0951d94b4ef4d;hb=refs/heads/REL9_4_STABLE#l22) on exit from
+[StrategyGetBuffer function](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/storage/buffer/freelist.c;h=4befab0e1ad05f05e950d3dea6f0951d94b4ef4d;hb=refs/heads/REL9_4_STABLE#l94)
+to see how many ClockSweep passes have been done through shared buffers to find
+a buffer to be replaced.
 
-Этот stap показал, что ClockSweep может пройти огромную часть shared_buffers
-внутри функции `StrategyGetBuffer`, держа эксклюзивную блокировку на расширение
-отношения и [BufFreelistLock LWLock](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/storage/buffer/freelist.c;h=4befab0e1ad05f05e950d3dea6f0951d94b4ef4d;hb=refs/heads/REL9_4_STABLE#l134).
+This stap showed me that a huge part of shared_buffers pages could be gone by
+ClockSweep inside StrategyGetBuffer while holding ExclusiveLock on extension
+of relation and
+[BufFreelistLock LWLock](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/storage/buffer/freelist.c;h=4befab0e1ad05f05e950d3dea6f0951d94b4ef4d;hb=refs/heads/REL9_4_STABLE#l134).
 
-Стало быть, проблема в базовой функциональности PostgreSQL и не проблема не
-может быть решена без правок в коде :( Но к стачстью, есть пару патчей, которые
-уже закоммичены в 9.5:
+So this is the problem in core functionality of PostgreSQL and it can't be
+fixed without patching the code :( But fortunatelly there are two patches
+that have been already commited for 9.5:
 
   1. [Change locking regimen around buffer replacement](http://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=5d7962c6) by Robert Haas,
   2. [Lockless StrategyGetBuffer clock sweep hot path](http://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=d72731a7) by Andres Freund.
 
-Я обязательно попробую PostgreSQL, собранные из мастера, на том же профиле
-нагрузки, чтобы проверить, стало ли лучше. Следите за новостями.
+I will definitely try PostgreSQL built from master on the same worload to see
+if that helped. Stay tuned.

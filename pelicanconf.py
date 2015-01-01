@@ -7,9 +7,8 @@ SITENAME = 'Yet another blog'
 SITEURL = 'http://blog.simply.name'
 PATH = 'content'
 TIMEZONE = 'Europe/Moscow'
-DEFAULT_LANG = 'ru-RU'
+DEFAULT_LANG = 'en'
 DISPLAY_CATEGORIES_ON_MENU = False
-#PLUGINS = ['pelican_gist', 'plugins.related_posts', 'plugins.sitemap']
 MENUITEMS = (
             ('PostgreSQL', '/tag/postgresql.html'),
             ('Information security', 'http://ib.simply.name'),

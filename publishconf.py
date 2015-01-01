@@ -22,3 +22,6 @@ DELETE_OUTPUT_DIRECTORY = True
 
 DISQUS_SITENAME = "simplyname"
 #GOOGLE_ANALYTICS = ""
+
+PLUGIN_PATHS = ['plugins',]
+PLUGINS = ['i18n_subsites',]

@@ -1,8 +1,10 @@
-Title: Pgcheck and delayed replics
+Title: Pgcheck и отставшие реплики
 Date: 2014-12-23 21:00
 Category: PostgreSQL
 Tags: PostgreSQL, plproxy, pgcheck
+Lang: ru
+Slug: pgcheck-and-delayed-replics
 
-Two months ago we [announced]({filename}/pgcheck_announce.md) pgcheck - a tool for automatic load control on PostgreSQL databases using PL/Proxy. Today we have fixed all found issues about one new feature - pgcheck can now account replication delays and not to route queires on delayed replics.
+Два месяца назад мы [анонсировали]({filename}/pgcheck_announce.md) pgcheck - инструмент для автоматической балансировки нагрузки на базы PostgreSQL с использованием PL/Proxy. Сегодня мы поправили все найденные проблемы, связанные с новой функциональностью - pgcheck теперь учитывает отставание реплик и не отправляет читающие запросы на отставшие реплики.
 
-Sources and some more info could be found on [github](https://github.com/yandex/pgcheck). Enjoy.
+Исходники и документация на [github](https://github.com/yandex/pgcheck). Наслаждайтесь.

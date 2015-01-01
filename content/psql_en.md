@@ -2,12 +2,12 @@ Title: Yet another psql color prompt
 Date: 2014-11-07 21:00
 Category: PostgreSQL
 Tags: PostgreSQL, psql
-Lang: ru
+Lang: en
 Slug: yet-another-psql-color-prompt
 
-В этом посте вы найдёте скриншоты и конфиги ещё одного раскрашивания цветом psql. Целью было сделать такую цветовую схему, которая одинаково хорошо бы смотрелась на терминалах со светлым и тёмным фонами.
+Below are screenshots and configs for yet another color prompting of psql. The goal was to get the color prompting scheme that works well on both light and dark background terminals.
 
-Пример файла `.bashrc`:
+Here is an example of `.bashrc` file:
 
     :::bash
     #!/bin/bash
@@ -19,7 +19,7 @@ Slug: yet-another-psql-color-prompt
     export LESS="-iMSx4 -FXR"
     export PAGER="sed \"s/^\(([0-9]\+ [rows]\+)\)/$GREEN\1$NOCOLOR/;s/^\(-\[\ RECORD\ [0-9]\+\ \][-+]\+\)/$GREEN\1$NOCOLOR/;s/|/$GREEN|$NOCOLOR/g;s/^\([-+]\+\)/$GREEN\1$NOCOLOR/\" 2>/dev/null | less"
 
-И соответствующий ему пример `.psqlrc`:
+And here is a `.psqlrc` example:
 
     :::PostgresConsoleLexer
     \set QUIET 1
@@ -35,9 +35,10 @@ Slug: yet-another-psql-color-prompt
     \timing
     \unset QUIET
 
-И конечно же, скриншоты psql с такими настройками:
+And here are the screenshots of such psql prompt:
 [![Colorized psql for dark backgrounds]({filename}/images/psql1.png)]({filename}/images/psql1.png)
 
 [![Colorized psql for light backgrounds]({filename}/images/psql2.png)]({filename}/images/psql2.png)
 
-Наслаждайтесь!
+Enjoy!
+
