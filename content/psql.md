@@ -1,4 +1,4 @@
-Title: Yet another psql color prompt
+Title: Ещё один способ раскрасить psql
 Date: 2014-11-07 21:00
 Category: PostgreSQL
 Tags: PostgreSQL, psql

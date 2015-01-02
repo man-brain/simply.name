@@ -10,9 +10,8 @@ TIMEZONE = 'Europe/Moscow'
 DEFAULT_LANG = 'en'
 DISPLAY_CATEGORIES_ON_MENU = False
 MENUITEMS = (
-            ('PostgreSQL', '/tag/postgresql.html'),
-            ('Information security', 'http://ib.simply.name'),
-            ('Operating systems', 'http://os.simply.name'),
+            ('Russian', 'http://blog.simply.name/ru'),
+#            ('PostgreSQL', '/tag/postgresql.html'),
             )
 TAG_CLOUD_MAX_ITEMS = 10
 THEME = 'themes/pelican-bootstrap3'
@@ -20,24 +19,22 @@ TYPOGRIFY = True
 DEFAULT_DATE_FORMAT = '%a %d %b %Y'
 
 # Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
+FEED_ALL_ATOM = 'feeds/all.xml'
 CATEGORY_FEED_ATOM = 'feeds/%s.xml'
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (
-         ('Videos', 'https://events.yandex.ru/lib/people/338694/'),
-         ('Information security', 'http://ib.simply.name'),
-         ('Operating systems', 'http://os.simply.name'),
-        )
+#LINKS = (
+#         ('Videos', 'https://events.yandex.ru/lib/people/338694/'),
+#        )
 
 # Social widget
 SOCIAL = (
           ('github', 'https://github.com/dev1ant'),
           ('twitter', 'https://twitter.com/man_brain'),
-          ('rss', 'http://blog.simply.name/feeds/postgresql.xml'),
+          ('rss', 'http://blog.simply.name/feeds/all.xml'),
          )
 
 DEFAULT_PAGINATION = 5
@@ -57,3 +54,29 @@ PYGMENTS_STYLE = 'solarizedlight'
 #ADDTHIS_GOOGLE_PLUSONE = False
 #CC_LICENSE = 'CC-BY'
 DISQUS_SITENAME = "simplyname"
+
+PLUGIN_PATHS = ['plugins', ]
+PLUGINS = ['i18n_subsites', ]
+I18N_SUBSITES = {
+    'ru': {
+        'SITENAME': 'Ещё один блог',
+        'THEME': 'themes/pelican-bootstrap3',
+        'SITEURL': 'http://blog.simply.name/ru',
+        'MENUITEMS': (
+            ('English', 'http://blog.simply.name'),
+            ('PostgreSQL', '/ru/tag/postgresql.html'),
+            ('Информационная безопасность', 'http://ib.simply.name'),
+            ('Операционные системы', 'http://os.simply.name'),
+            ),
+        'LINKS': (
+         ('Видео', 'https://events.yandex.ru/lib/people/338694/'),
+         ('Информационная безопасность', 'http://ib.simply.name'),
+         ('Операционные системы', 'http://os.simply.name'),
+        ),
+        'SOCIAL': (
+          ('github', 'https://github.com/dev1ant'),
+          ('twitter', 'https://twitter.com/man_brain'),
+          ('rss', 'http://blog.simply.name/ru/feeds/all.xml'),
+         ),
+        }
+    }
