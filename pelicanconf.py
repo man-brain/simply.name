@@ -64,14 +64,16 @@ I18N_SUBSITES = {
         'SITEURL': 'http://blog.simply.name/ru',
         'MENUITEMS': (
             ('English', 'http://blog.simply.name'),
-            ('PostgreSQL', '/ru/tag/postgresql.html'),
-            ('Информационная безопасность', 'http://ib.simply.name'),
-            ('Операционные системы', 'http://os.simply.name'),
+            ('PostgreSQL', '/ru/category/postgresql.html'),
+            ('ОС', '/ru/category/os.html'),
+            ('ИБ', '/ru/category/ib.html'),
+            ('ПИ', '/ru/category/pi.html'),
             ),
         'LINKS': (
          ('Видео', 'https://events.yandex.ru/lib/people/338694/'),
-         ('Информационная безопасность', 'http://ib.simply.name'),
-         ('Операционные системы', 'http://os.simply.name'),
+         ('Операционные системы', '/ru/category/os.html'),
+         ('Информационная безопасность', '/ru/category/ib.html'),
+         ('Программная инженерия', '/ru/category/pi.html'),
         ),
         'SOCIAL': (
           ('github', 'https://github.com/dev1ant'),
@@ -80,3 +82,4 @@ I18N_SUBSITES = {
          ),
         }
     }
+I18N_UNTRANSLATED_ARTICLES = 'remove'
