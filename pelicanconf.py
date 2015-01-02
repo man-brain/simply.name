@@ -15,7 +15,7 @@ MENUITEMS = (
             ('Operating systems', 'http://os.simply.name'),
             )
 TAG_CLOUD_MAX_ITEMS = 10
-THEME = 'pelican-bootstrap3'
+THEME = 'themes/pelican-bootstrap3'
 TYPOGRIFY = True
 DEFAULT_DATE_FORMAT = '%a %d %b %Y'
 
@@ -50,6 +50,10 @@ BOOTSTRAP_THEME = 'cerulean'
 DISPLAY_CATEGORIES_ON_SIDEBAR = False
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = False
 DISPLAY_TAGS_ON_SIDEBAR = True
+DISPLAY_TAGS_INLINE = True
 PYGMENTS_STYLE = 'solarizedlight'
-
+#ADDTHIS_PROFILE = 'ra-54a6b4f42fe712f5'
+#ADDTHIS_DATA_TRACK_ADDRESSBAR = False
+#ADDTHIS_GOOGLE_PLUSONE = False
+#CC_LICENSE = 'CC-BY'
 DISQUS_SITENAME = "simplyname"
