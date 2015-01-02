@@ -53,7 +53,10 @@ PYGMENTS_STYLE = 'solarizedlight'
 #ADDTHIS_DATA_TRACK_ADDRESSBAR = False
 #ADDTHIS_GOOGLE_PLUSONE = False
 #CC_LICENSE = 'CC-BY'
-DISQUS_SITENAME = "simplyname"
+DISQUS_SITENAME = 'simplyname'
+#ABOUT_ME = 'System administrator working in <a href="yandex.com">Yandex</a>.\
+# Recently mostly with PostgreSQL databases.'
+#AVATAR = '/images/photo.png'
 
 PLUGIN_PATHS = ['plugins', ]
 PLUGINS = ['i18n_subsites', ]
@@ -80,6 +83,8 @@ I18N_SUBSITES = {
           ('twitter', 'https://twitter.com/man_brain'),
           ('rss', 'http://blog.simply.name/ru/feeds/all.xml'),
          ),
+#        'ABOUT_ME': 'Системный администратор Яндекс.Почты. В последнее время \
+#                занимаюсь в основном PostgreSQL.',
         }
     }
 I18N_UNTRANSLATED_ARTICLES = 'remove'
