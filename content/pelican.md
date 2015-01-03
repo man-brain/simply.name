@@ -4,8 +4,6 @@ Category: misc
 Tags: pelican
 Lang: ru
 Slug: redesign
-Translation: True
-Status: draft
 
 Наконец-то дошли руки добраться до статических генераторов контента. Выбор пал
 на [pelican](https://github.com/getpelican/pelican) и пока я очень доволен.

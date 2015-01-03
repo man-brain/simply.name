@@ -4,14 +4,14 @@ from __future__ import unicode_literals
 
 AUTHOR = 'd0uble'
 SITENAME = 'Yet another blog'
-SITEURL = 'http://blog.simply.name'
+SITEURL = 'http://simply.name'
 PATH = 'content'
 TIMEZONE = 'Europe/Moscow'
 DEFAULT_LANG = 'en'
 DISPLAY_CATEGORIES_ON_MENU = False
 MENUITEMS = (
-            ('Russian', 'http://blog.simply.name/ru'),
-#            ('PostgreSQL', '/tag/postgresql.html'),
+            ('Russian', '/ru'),
+            ('PostgreSQL', '/tag/postgresql.html'),
             )
 TAG_CLOUD_MAX_ITEMS = 10
 THEME = 'themes/pelican-bootstrap3'
@@ -34,7 +34,7 @@ AUTHOR_FEED_RSS = None
 SOCIAL = (
           ('github', 'https://github.com/dev1ant'),
           ('twitter', 'https://twitter.com/man_brain'),
-          ('rss', 'http://blog.simply.name/feeds/all.xml'),
+          ('rss', '/feeds/all.xml'),
          )
 
 DEFAULT_PAGINATION = 5
@@ -64,9 +64,9 @@ I18N_SUBSITES = {
     'ru': {
         'SITENAME': 'Ещё один блог',
         'THEME': 'themes/pelican-bootstrap3',
-        'SITEURL': 'http://blog.simply.name/ru',
+        'SITEURL': 'http://simply.name/ru',
         'MENUITEMS': (
-            ('English', 'http://blog.simply.name'),
+            ('English', 'http://simply.name'),
             ('PostgreSQL', '/ru/category/postgresql.html'),
             ('ОС', '/ru/category/os.html'),
             ('ИБ', '/ru/category/ib.html'),
@@ -81,7 +81,7 @@ I18N_SUBSITES = {
         'SOCIAL': (
           ('github', 'https://github.com/dev1ant'),
           ('twitter', 'https://twitter.com/man_brain'),
-          ('rss', 'http://blog.simply.name/ru/feeds/all.xml'),
+          ('rss', '/ru/feeds/all.xml'),
          ),
 #        'ABOUT_ME': 'Системный администратор Яндекс.Почты. В последнее время \
 #                занимаюсь в основном PostgreSQL.',
