@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'd0uble'
 SITENAME = 'Yet another blog'
-SITEURL = 'http://simply.name'
+SITEURL = 'https://simply.name'
 PATH = 'content'
 TIMEZONE = 'Europe/Moscow'
 DEFAULT_LANG = 'en'
@@ -64,9 +64,9 @@ I18N_SUBSITES = {
     'ru': {
         'SITENAME': 'Ещё один блог',
         'THEME': 'themes/pelican-bootstrap3',
-        'SITEURL': 'http://simply.name/ru',
+        'SITEURL': 'https://simply.name/ru',
         'MENUITEMS': (
-            ('English', 'http://simply.name'),
+            ('English', 'https://simply.name'),
             ('PostgreSQL', '/ru/category/postgresql.html'),
             ('ОС', '/ru/category/os.html'),
             ('ИБ', '/ru/category/ib.html'),
