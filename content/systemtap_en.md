@@ -43,14 +43,12 @@ passed to `configure`-script. Since I am using RHEL I have fixed spec-file for t
     >   --enable-dtrace \
     >   --enable-debug \
 
-Actually, compiling with such symbols is neccessary for using predefined in
+Actually, compiling with `--enable-dtrace` is neccessary for using predefined in
 PostgreSQL source code markers. All of them are defined in the
 [documentation](http://www.postgresql.org/docs/current/static/dynamic-trace.html#DTRACE-PROBE-POINT-TABLE).
-Option `--enable-debug` is not needed for using systemtap at all - I have added
-it for taking PostgreSQL backend stack traces with gdb. One more thing to say
-is that recompiling PostgreSQL for deeper debugging is not really the thing to
-be used in production-environment :( That's why IMHO analogue of oracle wait
-interface in PostgreSQL should be done ever.
+One more thing to say is that recompiling PostgreSQL for deeper debugging is
+not really the thing to be used in production-environment :( That's why IMHO
+analogue of oracle wait interface in PostgreSQL should be done ever.
 
 ####First stap
 Right, let's assume that we have everything needed to start, what next? The
@@ -272,7 +270,7 @@ The next stap I had written was the following:
     }
 
 Note that PostgreSQL should not be built with `--enable-dtrace` option for this
-stap to work. And this stap gets data from
+stap to work (but `--enable-debug` is mandatory). And this stap gets data from
 [StrategyControl structure](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/storage/buffer/freelist.c;h=4befab0e1ad05f05e950d3dea6f0951d94b4ef4d;hb=refs/heads/REL9_4_STABLE#l22) on exit from
 [StrategyGetBuffer function](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/storage/buffer/freelist.c;h=4befab0e1ad05f05e950d3dea6f0951d94b4ef4d;hb=refs/heads/REL9_4_STABLE#l94)
 to see how many ClockSweep passes have been done through shared buffers to find

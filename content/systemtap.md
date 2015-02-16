@@ -44,14 +44,10 @@ RHEL, я поправил spec-файл следующим образом:
     >   --enable-dtrace \
     >   --enable-debug \
 
-Вообще-то компиляция с этими символами необходима только для использования
+Вообще-то компиляция с `--enable-dtrace` необходима только для использования
 предопределённых в коде PostgreSQL маркеров. Все они описаны в
 [документации](http://www.postgresql.org/docs/current/static/dynamic-trace.html#DTRACE-PROBE-POINT-TABLE).
-Опция `--enable-debug` вообще не нужна для использования SystemTap - я добавил
-её для снятия информативных трейсов с процессов PostgreSQL с помощью gdb.
-Ещё одна вещь, о которой стоит сказать, - это то, что пересборка PostgreSQL
-для глубокой отладки, явно не является решением для использования в бою :(
-Именно поэтому аналог интерфейа ожиданий oracle в PostgreSQL когда-нибудь
+Именно поэтому аналог интерфейса ожиданий oracle в PostgreSQL когда-нибудь
 должен быть сделан.
 
 ####Первый stap
@@ -274,7 +270,7 @@ checkpoint'ов с происходящими событиями.
     }
 
 Обратите внимание, что PostgreSQL не должен быть собран с опцией `--enable-dtrace`
-для работы этого скрипта. И этот stap получает данные из
+для работы этого скрипта (но `--enable-debug` обязателен). И этот stap получает данные из
 [структуры StrategyControl](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/storage/buffer/freelist.c;h=4befab0e1ad05f05e950d3dea6f0951d94b4ef4d;hb=refs/heads/REL9_4_STABLE#l22)
 на выходе из [функции StrategyGetBuffer](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/storage/buffer/freelist.c;h=4befab0e1ad05f05e950d3dea6f0951d94b4ef4d;hb=refs/heads/REL9_4_STABLE#l94),
 чтобы увидеть, сколько страничек в shared_buffers было пройдено до того, как
