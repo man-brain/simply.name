@@ -1,5 +1,6 @@
 Title: Ещё один способ раскрасить psql
 Date: 2014-11-07 21:00
+Modified: 2015-05-10 20:00
 Category: PostgreSQL
 Tags: PostgreSQL, psql
 Lang: ru
@@ -26,7 +27,7 @@ Slug: yet-another-psql-color-prompt
     \set ON_ERROR_ROLLBACK interactive
     \set VERBOSITY verbose
     \x auto
-    \set PROMPT1 '%[%033[38;5;27m%]%`hostname -s`/%[%033[38;5;102m%]%/%[%033[0m%] %# '
+    \set PROMPT1 '%[%033[38;5;27m%]%`hostname -s`%[%033[38;5;102m%]/%/ %[%033[31;5;27m%]%`/var/lib/pgsql/.role.sh`%[%033[0m%] %# '
     \set PROMPT2 ''
     \set HISTFILE ~/.psql_history- :DBNAME
     \set HISTCONTROL ignoredups
@@ -34,6 +35,18 @@ Slug: yet-another-psql-color-prompt
     \pset pager always
     \timing
     \unset QUIET
+
+Скрипт для определения роли машины (`/var/lib/pgsql/.role.sh`) весьма простой:
+
+    :::bash
+    #!/bin/bash
+
+    res=`psql postgres -t -A -c 'show transaction_read_only;'`
+    if [ $res == 'off' ]; then
+        echo 'M'
+    else
+        echo 'R'
+    fi
 
 И конечно же, скриншоты psql с такими настройками:
 [![Colorized psql for dark backgrounds]({filename}/images/psql1.png)]({filename}/images/psql1.png)
