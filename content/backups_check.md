@@ -1,7 +1,7 @@
 Title: Проверка консистентности бэкапов
 Date: 2015-06-06 20:00
 Category: PostgreSQL
-Tags: PostgreSQL, barman, backup
+Tags: PostgreSQL, barman, backup, monitoring
 Lang: ru
 Slug: barman-backups-check
 

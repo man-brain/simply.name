@@ -1,7 +1,7 @@
 Title: Checking backups consistency
 Date: 2015-06-06 20:00
 Category: PostgreSQL
-Tags: PostgreSQL, barman, backup
+Tags: PostgreSQL, barman, backup, monitoring
 Lang: en
 Slug: barman-backups-check
 
