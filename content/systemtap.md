@@ -281,7 +281,7 @@ checkpoint'ов с происходящими событиями.
 отношения и [BufFreelistLock LWLock](http://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/storage/buffer/freelist.c;h=4befab0e1ad05f05e950d3dea6f0951d94b4ef4d;hb=refs/heads/REL9_4_STABLE#l134).
 
 Стало быть, проблема в базовой функциональности PostgreSQL и не проблема не
-может быть решена без правок в коде :( Но к стачстью, есть пару патчей, которые
+может быть решена без правок в коде :( Но к счастью, есть пару патчей, которые
 уже закоммичены в 9.5:
 
   1. [Change locking regimen around buffer replacement](http://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=5d7962c6) by Robert Haas,
