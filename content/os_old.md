@@ -22,6 +22,7 @@ Translation: True
   * [Вводная лекция](http://prezi.com/m4iz8trzauam/presentation/)
   * [Загрузка операционной системы](https://yadi.sk/i/HwPhDyiqdkZrB)
   * [Управление процессами](https://yadi.sk/i/xj0H9KNudkZrm)
+  * [Межпроцессное взаимодействие](https://yadi.sk/i/auCjpn2tq6jWg)
   * [Управление памятью](https://yadi.sk/i/CCrqZ9XFdkZse)
   * [Ввод-вывод](https://yadi.sk/i/1_NNAYIydkZtP)
   * [Файловые системы](https://yadi.sk/i/UDKfNpgNdkZut)
