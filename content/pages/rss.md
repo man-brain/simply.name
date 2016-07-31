@@ -8,6 +8,3 @@ Slug: rss
 по соответсвующим темам:
 
   * [PostgreSQL](/ru/feeds/postgresql.xml)
-  * [Операционные системы](/ru/feeds/os.xml)
-  * [Информационная безопасность](/ru/feeds/ib.xml)
-  * [Программная инженерия](/ru/feeds/pi.xml)

@@ -68,16 +68,7 @@ I18N_SUBSITES = {
         'MENUITEMS': (
             ('English', 'https://simply.name'),
             ('PostgreSQL', '/ru/category/postgresql.html'),
-            ('ОС', '/ru/category/os.html'),
-            ('ИБ', '/ru/category/ib.html'),
-            ('ПИ', '/ru/category/pi.html'),
             ),
-        'LINKS': (
-         ('Видео', 'https://events.yandex.ru/lib/people/338694/'),
-         ('Операционные системы', '/ru/category/os.html'),
-         ('Информационная безопасность', '/ru/category/ib.html'),
-         ('Программная инженерия', '/ru/category/pi.html'),
-        ),
         'SOCIAL': (
           ('github', 'https://github.com/dev1ant'),
           ('twitter', 'https://twitter.com/man_brain'),
