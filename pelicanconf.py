@@ -11,7 +11,7 @@ DEFAULT_LANG = 'en'
 DISPLAY_CATEGORIES_ON_MENU = False
 MENUITEMS = (
             ('Russian', '/ru'),
-            ('PostgreSQL', '/tag/postgresql.html'),
+            ('PostgreSQL', '/category/postgresql.html'),
             )
 TAG_CLOUD_MAX_ITEMS = 10
 THEME = 'themes/pelican-bootstrap3'
