@@ -199,3 +199,17 @@ Bruce Momjian прислал
 [баг](http://www.postgresql.org/message-id/20150330162247.2492.923@wrigleys.postgresql.org),
 патч с решением которого Tom Lane наваял за 38 минут (!) с момента создания bug
 report. Это очень круто.
+
+###UPD: Внимание, потенциальная потеря данных
+
+В показанном скрипте есть примерно такое:
+
+    :::python
+    if options.need_stat:
+        run_or_exit(master, '/usr/pgsql-9.4/bin/vacuumdb --all --analyze-only', runas='postgres')
+
+Это делается, когда мастер запущен уже с новой версией, но закрыт от реплик.
+Если при этом на мастере `autovacuum = on`, то это с высокой долей вероятности
+приведёт к потере данных. Подробнее см.
+[доклад моего коллеги Дмитрия Сарафанникова](https://pgconf.ru/2018/110829) или
+[обсуждение в рассылке](https://www.postgresql.org/message-id/DA18C5E1-A115-4C1C-9F7C-E7B9A5F3EBC5%40yandex.ru).

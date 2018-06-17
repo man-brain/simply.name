@@ -196,3 +196,16 @@ And for dessert... we have already caught a rare
 [bug](http://www.postgresql.org/message-id/20150330162247.2492.923@wrigleys.postgresql.org)
 with 9.4.1 and Tom Lane has made a patch to fix the problem in 38 minutes (!)
 from creating a bug report. It is very cool.
+
+###UPD: Attention, potential data loss
+
+The script above has the following:
+
+    :::python
+    if options.need_stat:
+        run_or_exit(master, '/usr/pgsql-9.4/bin/vacuumdb --all --analyze-only', runas='postgres')
+
+It is done on primary with new version when it is closed from replics.
+If `autovacuum = on` on primary, this can lead to data loss. Details could
+be found in
+[the thread on pgsql-hackers@](https://www.postgresql.org/message-id/DA18C5E1-A115-4C1C-9F7C-E7B9A5F3EBC5%40yandex.ru).
