@@ -14,7 +14,7 @@ SITEURL = 'http://blog.simply.name'
 #RELATIVE_URLS = True
 
 #FEED_ALL_ATOM = 'feeds/all.atom.xml'
-CATEGORY_FEED_ATOM = 'feeds/%s.xml'
+CATEGORY_FEED_ATOM = 'feeds/{slug}.xml'
 
 DELETE_OUTPUT_DIRECTORY = True
 

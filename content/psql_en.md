@@ -49,9 +49,9 @@ Script for determining host role (`/var/lib/pgsql/.role.sh`) is really simple:
     fi
 
 And here are the screenshots of such psql prompt:
-[![Colorized psql for dark backgrounds]({filename}/images/psql1.png)]({filename}/images/psql1.png)
+[![Colorized psql for dark backgrounds]({static}/images/psql1.png)]({static}/images/psql1.png)
 
-[![Colorized psql for light backgrounds]({filename}/images/psql2.png)]({filename}/images/psql2.png)
+[![Colorized psql for light backgrounds]({static}/images/psql2.png)]({static}/images/psql2.png)
 
 Enjoy!
 

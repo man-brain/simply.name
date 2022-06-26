@@ -20,7 +20,7 @@ DEFAULT_DATE_FORMAT = '%a %d %b %Y'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = 'feeds/all.xml'
-CATEGORY_FEED_ATOM = 'feeds/%s.xml'
+CATEGORY_FEED_ATOM = 'feeds/{slug}.xml'
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
@@ -79,3 +79,6 @@ I18N_SUBSITES = {
         }
     }
 I18N_UNTRANSLATED_ARTICLES = 'remove'
+JINJA_ENVIRONMENT = {
+    'extensions': ['jinja2.ext.i18n'],
+}

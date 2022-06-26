@@ -49,8 +49,8 @@ Slug: yet-another-psql-color-prompt
     fi
 
 И конечно же, скриншоты psql с такими настройками:
-[![Colorized psql for dark backgrounds]({filename}/images/psql1.png)]({filename}/images/psql1.png)
+[![Colorized psql for dark backgrounds]({static}/images/psql1.png)]({static}/images/psql1.png)
 
-[![Colorized psql for light backgrounds]({filename}/images/psql2.png)]({filename}/images/psql2.png)
+[![Colorized psql for light backgrounds]({static}/images/psql2.png)]({static}/images/psql2.png)
 
 Наслаждайтесь!
