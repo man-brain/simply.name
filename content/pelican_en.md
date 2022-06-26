@@ -10,5 +10,5 @@ testing I have chosen [pelican](https://github.com/getpelican/pelican). So far
 I'm very satisfied. Let's see what happens.
 
 By the way, sources of the current site version could be found on
-[github](https://github.com/dev1ant/simply.name).
+[github](https://github.com/man-brain/simply.name).
 

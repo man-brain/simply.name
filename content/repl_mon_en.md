@@ -22,7 +22,7 @@ replication lag on cluster with 1&nbsp;MB/s of writing load and on cluster with
 
 To solve both problems we have written
 [bgworker](http://www.postgresql.org/docs/current/static/bgworker.html),
-sources for which could be taken [here](https://github.com/dev1ant/repl_mon).
+sources for which could be taken [here](https://github.com/man-brain/repl_mon).
 
 The princile of operation is really simple -- bgworker once in a while (which
 could be configured with an accuracy of 1 ms) writes in some table (`repl_mon`
@@ -47,7 +47,7 @@ by default, but it can be configured) next things:
     pgtest02g/postgres M #
 
 Query for getting data could be seen
-[here](https://github.com/dev1ant/repl_mon/blob/8e14fb52/repl_mon.c#L127-L131).
+[here](https://github.com/man-brain/repl_mon/blob/8e14fb52/repl_mon.c#L127-L131).
 
 Number of alive replics could be taken directly from this table on master. And
 on replics values of fields `ts` and `location` could be compared with current

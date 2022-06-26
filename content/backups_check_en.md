@@ -21,7 +21,7 @@ Recovery of one shard took more time than others because we could not restore
 from last backup and we had to restore from second last (we do backups every
 night). For that reason after fuckup we decided to get back checking of backups
 consistency. As a result there are a couple of scripts which could be seen
-[here](https://github.com/dev1ant/misc/tree/master/backups_checking). One of
+[here](https://github.com/man-brain/misc/tree/master/backups_checking). One of
 them (`check_backup_consistency.py`) sequentially deploys last backup of each
 cluster, starts PostgreSQL with `recovery_target = 'immediate'` and waits for
 reaching consistent state.

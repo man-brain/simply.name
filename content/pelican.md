@@ -13,4 +13,4 @@ Slug: redesign
 время.
 
 Кстати, исходники текущей версии сайта можно взять на
-[github](https://github.com/dev1ant/simply.name).
+[github](https://github.com/man-brain/simply.name).

@@ -22,7 +22,7 @@ Slug: postgresql-replication-monitoring
 
 Для решения обеих проблем мы написали
 [bgworker](http://www.postgresql.org/docs/current/static/bgworker.html),
-исходники которого лежат [тут](https://github.com/dev1ant/repl_mon).
+исходники которого лежат [тут](https://github.com/man-brain/repl_mon).
 
 Принцип работы очень простой -- bgworker раз в какое-то время (настраивается с
 точностью до милисекунды) пишет в какую-то табличку (по-умолчанию `repl_mon`, но
@@ -47,7 +47,7 @@ Slug: postgresql-replication-monitoring
     pgtest02g/postgres M #
 
 Запрос для получения данных можно увидеть
-[тут](https://github.com/dev1ant/repl_mon/blob/8e14fb52/repl_mon.c#L127-L131).
+[тут](https://github.com/man-brain/repl_mon/blob/8e14fb52/repl_mon.c#L127-L131).
 
 Количество живых реплик можно доставать прямо из этой таблички на мастере, а
 на репликах можно сравнивать значения из полей `ts` и `location` с текущим

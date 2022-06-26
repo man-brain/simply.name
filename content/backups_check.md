@@ -23,7 +23,7 @@ Slug: barman-backups-check
 предпоследнего (бэкапы мы делаем каждый день). Потому проверку консистентности
 после факапа решили вернуть и в результате получилась пара скриптов, которые
 можно посмотреть
-[тут](https://github.com/dev1ant/misc/tree/master/backups_checking). Один из
+[тут](https://github.com/man-brain/misc/tree/master/backups_checking). Один из
 них (`check_backup_consistency.py`) последовательно разворачивает последний
 бэкап каждого кластера, запускает PostgreSQL с `recovery_target = 'immediate'`
 и дожидается достижения базой консистентного состояния.

@@ -32,7 +32,7 @@ AUTHOR_FEED_RSS = None
 
 # Social widget
 SOCIAL = (
-          ('github', 'https://github.com/dev1ant'),
+          ('github', 'https://github.com/man-brain'),
           ('twitter', 'https://twitter.com/man_brain'),
           ('rss', '/feeds/all.xml'),
          )
@@ -70,7 +70,7 @@ I18N_SUBSITES = {
             ('PostgreSQL', '/ru/category/postgresql.html'),
             ),
         'SOCIAL': (
-          ('github', 'https://github.com/dev1ant'),
+          ('github', 'https://github.com/man-brain'),
           ('twitter', 'https://twitter.com/man_brain'),
           ('rss', '/ru/feeds/all.xml'),
          ),
